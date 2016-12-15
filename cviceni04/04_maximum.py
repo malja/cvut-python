@@ -9,7 +9,7 @@
 # (kladné, nuly, záporné)!
 ###############################################################################
 
-array = input("Čísla (odděluj mezerou): ").split(" ")
+array = list( map(int, input("Čísla (odděluj mezerou): ").split(" ") ) )
 
 def max_in_array(arr):
     """
@@ -21,12 +21,19 @@ def max_in_array(arr):
     ------
         maximální hodnotu
     """
-    maxNum = 0
 
-    for i in array:
-        if maxNum < int(i):
-            maxNum = int(i)
+    if len(arr) == 0:
+        return -1
 
-    return maxNum
+    maxNum = arr[0]
+    index = 0
+
+    for i, element in enumerate(arr):
+
+        if maxNum < int(element):
+            maxNum = int(element)
+            index = i
+
+    return maxNum, index
 
 print(max_in_array(array))
