@@ -1,0 +1,11 @@
+def funkce(a,b):
+    c=''
+    a**=b
+    if a<b:
+        print('ahoj\'ky',a)
+    else:
+        print(0xff,0b11101,0o777,.90e-10,123E+5,c)
+        print('''To je dlouhy
+        retezec pres mnoho
+        radku''')
+funkce(-256+356,.85**.33)

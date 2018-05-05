@@ -1,0 +1,32 @@
+class Complex:
+    def amplitude(self):
+        return self.real*self.real + self.imag*self.imag
+ 
+    def add(self, rhs):
+        self.real += rhs.real
+        self.imag += rhs.imag
+ 
+    def sub(self, rhs):
+        self.real -= rhs.real
+        self.imag -= rhs.imag
+ 
+    def mul(self, rhs):
+        r = self.real*rhs.real - self.imag*rhs.imag;
+        i = self.real*rhs.imag + self.imag*rhs.real;
+        self.real = r
+        self.imag = i 
+ 
+a = Complex()
+print("a=",a)
+
+b = Complex(1,-1)
+print("b=",b)
+
+a.add(b)
+print("a=",a)
+
+a.mul(b)
+print("a=",a)
+
+print("|a|=",a.amplitude())
+print("|b|=",b.amplitude())
