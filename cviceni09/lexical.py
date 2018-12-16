@@ -127,6 +127,7 @@ Sep: )
 import sys
 import keyword as kw
 import tokenize
+import re
 
 separators = [
     "(", ")", "[", "]", "{", "}", ",", ":", ".", ";",
@@ -199,7 +200,12 @@ def tokenizeFile(file_name):
                 # Odstranění standardních uvozovek
                 innerText = innerText[1:-1]
 
-            innerText = innerText.replace("\\", "")
+            # Odstraní všechny výskyty zpětného lomítka následovaného nějakým znakem
+            # za znak za zpětným lomítkem:
+            # \\ => \
+            # \a => a
+            for a in re.finditer(r"\\(.)", innerText):
+                innerText = innerText.replace(a.group(0), a.group(1), 1)
 
             output.append("Str: " + innerText)
 
